@@ -7,7 +7,7 @@ import { Activity, ArrowDown, ArrowUp, Car, ChevronDown, ChevronUp, Clock, Credi
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
 
-const API_BASE ="http://localhost:4000/api";
+const API_BASE = import.meta.env.VITE_API_URL;
 const CATEGORY_ICONS = {
   Food: <Utensils className="w-4 h-4" />,
   Housing: <Home className="w-4 h-4" />,
