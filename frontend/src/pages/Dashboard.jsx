@@ -13,7 +13,7 @@ import GaugeCard from '../components/GaugeCard';
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 import AddTransactionModal from '../components/Add';
 
-const API_BASE = "https://expense-tracker-7jlx.onrender.com/api";
+const API_BASE = import.meta.env.VITE_API_URL;
 const getAuthHeader =()=>{
   const token =localStorage.getItem("token") || localStorage.getItem("authToken")
   return token ? {Authorization : `Bearer ${token}`} : {};
