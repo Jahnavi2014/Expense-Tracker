@@ -72,7 +72,7 @@ const validateForm = () => {
     try{
 
       const  res =await axios.post(
-        `${API_URL}/api/user/register`,
+        `${API_URL}/user/register`,
         {name,email,password},
         {headers:{"Content-Type":"application/json"}},
         
