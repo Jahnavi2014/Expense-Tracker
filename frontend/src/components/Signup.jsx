@@ -6,7 +6,7 @@ import axios from 'axios';
 import { ArrowLeft, Eye, EyeOff, Lock, Mail, User } from 'lucide-react';
 
 
-const Signup = ({ onSignup, API_URL="https://expense-tracker-7jlx.onrender.com/api" }) => {
+const Signup = ({ onSignup, API_URL = import.meta.env.VITE_API_URL }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
