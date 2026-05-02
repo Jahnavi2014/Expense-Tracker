@@ -49,6 +49,10 @@ const PasswordInput = memo(({ name, label, value, error, showField, onToggle, on
 
 PasswordInput.displayName = 'PasswordInput';
 
+const token =
+  localStorage.getItem("token") ||
+  sessionStorage.getItem("token");
+
 const Profile = ({onUpdateProfile,onLogout}) => {
     const navigate = useNavigate();
   const [user, setUser] = useState({ 
@@ -98,9 +102,11 @@ const Profile = ({onUpdateProfile,onLogout}) => {
 
     catch(error){
       console.error(`${method} request error:`,error);
-      if(error.response?.status=== 401) {
-        navigate("/login");
-      }
+   if (error.response?.status === 401) {
+  localStorage.clear();
+  sessionStorage.clear();
+  navigate("/login");
+}
       throw error;
 
     } finally{
@@ -221,11 +227,12 @@ useEffect(()=>{
     }
   };
 
-  const handleLogout= useCallback(()=>{
-    onLogout?.();
-    navigate("/signup")
-
-  },[onLogout,navigate]);
+const handleLogout = useCallback(() => {
+  localStorage.removeItem("token");
+  sessionStorage.removeItem("token");
+  onLogout?.();
+  navigate("/login");
+}, [onLogout, navigate]);
 
   const closePasswordModal = useCallback(()=>{
     if(!loading){
