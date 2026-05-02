@@ -11,7 +11,7 @@ import Expense from './pages/Expense';
 import Profile from './pages/Profile';
 
 
-const API_URL = "https://expense-tracker-7jlx.onrender.com/api";
+const API_URL = import.meta.env.VITE_API_URL;
 
 // to get transaction fron localstroage
 const getTransactionsFromStorage =()=>{
